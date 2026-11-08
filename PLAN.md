@@ -93,6 +93,8 @@ La app se navega como un **inicio visual con tarjetas grandes**: aprieto una y e
 | Notificaciones | Media | 2 |
 | Tracker de hábitos + resumen semanal | Media | 2 |
 | Metas divididas en días | Media | 2 |
+| Trackers de ánimo / sueño / estudio | Media | 2 |
+| Mini journal (cosas buenas / pensamientos random) + sticker del día | Media | 2 |
 | Estante de libros / series / películas | Baja | 3 |
 
 ## 5. Plataforma y tecnología (todo gratis)
@@ -126,10 +128,10 @@ Estilo agenda japonesa (tipo Hobonichi) / journal, pero **hecho automáticamente
 - **Trackers visuales:** cuadrícula de hábitos con ✓, gráficos de línea con puntos de colores (ánimo, sueño), barras horizontales pastel (horas de estudio, pasos).
 - **Estante de libros** con lomos de colores y portadas; **página de reseña** con portada, estrellas, fecha de término y notas.
 
-### Ideas nuevas sacadas de las referencias (opcionales, a confirmar)
+### Ideas nuevas sacadas de las referencias ✅ (aprobadas)
 - Tracker de **ánimo** y de **sueño** (gráfico de línea con puntos pastel).
 - Tracker de **horas de estudio** (barras horizontales por día).
-- Secciones del día: **"cosas buenas que pasaron"** y **"pensamientos random"** (mini journal).
+- **Mini journal** en el día: **"cosas buenas que pasaron"** y **"pensamientos random"**.
 - Elegir un **sticker** para representar cada día en el calendario.
 
 - Los colores de los pendientes (verde/amarillo/rojo claro) usan la misma paleta pastel.
@@ -147,14 +149,14 @@ Estilo agenda japonesa (tipo Hobonichi) / journal, pero **hecho automáticamente
 
 ## 8. Fases
 - **Fase 1 – MVP:** inicio visual, calendario, vista diaria, pendientes (límite 3–5, colores, arrastre automático), rutinas con temporizador, sincronización.
-- **Fase 2:** notificaciones, hábitos + resumen semanal, metas.
+- **Fase 2:** notificaciones, hábitos + resumen semanal, metas, trackers de ánimo/sueño/estudio, mini journal y sticker del día.
 - **Fase 3:** estante de libros/series/películas, extras.
 
 ## 9. Preguntas abiertas
 - [x] ~~¿PWA o nativa?~~ → PWA, todo gratis.
 - [x] ~~¿Diferencia tarea vs pendiente?~~ → Rutinas (con temporizador) vs Pendientes (con fecha límite).
 - [x] ~~¿Debe funcionar sin internet?~~ → Sí, como extra (no crítico).
-- [ ] ¿Agrego los trackers de ánimo / sueño / estudio y el mini journal?
+- [x] ~~¿Trackers de ánimo / sueño / estudio y mini journal?~~ → Sí, me gustan (Fase 2–3).
 - [ ] Umbrales de los colores (¿cuándo pasa de verde a amarillo y de amarillo a rojo?).
 - [ ] ¿Los pasos de las metas cuentan para el límite diario?
 - [ ] ¿Vincular pendientes con hábitos (ej. completar "estudiar" marca el hábito)?
@@ -166,3 +168,4 @@ Estilo agenda japonesa (tipo Hobonichi) / journal, pero **hecho automáticamente
 - 2026-11-07: Módulos definidos. Máx. 3–5 pendientes diarios. Estilo minimalista aesthetic.
 - 2026-11-07: **Todo gratis.** PWA + GitHub Pages + Supabase. Widget descartado. Rutinas (temporizador) ≠ Pendientes (fecha límite). Proyecto irá en GitHub.
 - 2026-11-07: Estilo definido: "bullet journal digital" (papel crema, washi tape, pastel, stickers). Offline: sí, como extra. Instalados Git, GitHub CLI y Node.js.
+- 2026-11-07: Aprobados trackers de ánimo/sueño/estudio, mini journal y sticker del día.

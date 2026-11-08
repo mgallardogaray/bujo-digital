@@ -13,6 +13,7 @@ export function PendingItem({ p, onToggle, onDelete, onTomorrow }: Props) {
   const now = Date.now()
   const tone = p.done ? 'done' : urgency(p, now)
   const late = !p.done && isOverdue(p, now)
+  const dueToday = !p.done && !late && tone === 'near'
   const due = formatShort(p.due) + (p.dueTime ? ` · ${p.dueTime}` : '')
 
   return (
@@ -26,7 +27,9 @@ export function PendingItem({ p, onToggle, onDelete, onTomorrow }: Props) {
       </button>
       <div className="pbody">
         <span className="ptitle">{p.title}</span>
-        <span className="pdue">{late ? `pasó el límite (${due}) · sin drama 💛` : `límite: ${due}`}</span>
+        <span className="pdue">
+          {late ? `pasó el límite (${due}) · sin drama 💛` : dueToday ? 'vence hoy' : `límite: ${due}`}
+        </span>
       </div>
       {!p.done && (
         <button className="ghost" onClick={onTomorrow} title="Pasar a mañana" aria-label="Pasar a mañana">

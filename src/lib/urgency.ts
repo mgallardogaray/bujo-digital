@@ -1,4 +1,5 @@
 import type { Pending } from './store'
+import { toISO } from './dates'
 
 // 'ok' = verde, 'soon' = amarillo, 'near' = rojo (ya venció)
 export type Urgency = 'ok' | 'soon' | 'near'
@@ -15,10 +16,12 @@ function dueTime(p: Pick<Pending, 'due' | 'dueTime'>): number {
 /**
  * Verde: faltan más de 5 días.
  * Amarillo: faltan 5 días o menos.
- * Rojo: ya venció.
+ * Rojo: ya venció (con hora: cuando pasa la hora; sin hora: desde que empieza su día límite).
  */
 export function urgency(p: Pick<Pending, 'due' | 'dueTime'>, now: number): Urgency {
   if (dueTime(p) < now) return 'near'
+  // Sin hora: es rojo desde que empieza su día límite.
+  if (!p.dueTime && p.due <= toISO(new Date(now))) return 'near'
   // Se cuentan días de calendario: "dentro de 5 días" = 5, sin importar la hora.
   const [y, m, d] = p.due.split('-').map(Number)
   const today = new Date(now)

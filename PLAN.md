@@ -110,8 +110,9 @@ La app se navega como un **inicio visual con tarjetas grandes**: aprieto una y e
 - [x] Instalar **Git** (2.56).
 - [x] Instalar **GitHub CLI** (`gh` 2.103).
 - [x] Instalar **Node.js** (v26 LTS).
-- [ ] Iniciar sesión en GitHub con `gh` (usuario: **mgallardogaray**).
-- [ ] Crear el repositorio en GitHub y subir el proyecto.
+- [x] Iniciar sesión en GitHub con `gh` (usuario: **mgallardogaray**).
+- [x] Repositorio creado: https://github.com/mgallardogaray/bujo-digital
+- [ ] Crear cuenta gratis en Supabase (para sincronizar celular ↔ tablet).
 
 ## 6. Diseño y experiencia
 - **Estilo:** minimalista + aesthetic. La app se ve bonita sola, sin que yo decore nada.

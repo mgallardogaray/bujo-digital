@@ -9,6 +9,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
+      injectRegister: false, // el registro se hace a mano en src/main.tsx
       includeAssets: ['apple-touch-icon.png'],
       manifest: {
         name: 'Bujo Digital',

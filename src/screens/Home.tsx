@@ -39,6 +39,9 @@ export function Home() {
 
   return (
     <>
+      <a className="palette" href="#/colores" aria-label="Cambiar colores" title="Colores">
+        🎨
+      </a>
       <Header title="Bujo" back={null} />
       <p className="monthlabel">
         {monthName(now.getMonth())} {now.getFullYear()}

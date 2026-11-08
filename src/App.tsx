@@ -6,9 +6,28 @@ import { Calendar } from './screens/Calendar'
 import { Day } from './screens/Day'
 import { Routines } from './screens/Routines'
 import { Shortcuts } from './screens/Shortcuts'
+import { Colors } from './screens/Colors'
+import { derive } from './lib/color'
+import { useStore } from './lib/store'
 
 export default function App() {
   const [page, param] = useRoute()
+  const color = useStore().settings.color
+
+  // Color elegido por mí (si no, manda el color del mes)
+  useEffect(() => {
+    const root = document.documentElement
+    if (color) {
+      const { accent, soft, onAccent } = derive(color)
+      root.style.setProperty('--accent', accent)
+      root.style.setProperty('--accent-soft', soft)
+      root.style.setProperty('--on-accent', onAccent)
+    } else {
+      root.style.removeProperty('--accent')
+      root.style.removeProperty('--accent-soft')
+      root.style.removeProperty('--on-accent')
+    }
+  }, [color])
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -25,5 +44,6 @@ export default function App() {
   if (page === 'dia') return <Day date={param ?? todayISO()} />
   if (page === 'rutinas') return <Routines />
   if (page === 'atajos') return <Shortcuts />
+  if (page === 'colores') return <Colors />
   return <Home />
 }

@@ -26,6 +26,8 @@ type State = {
   logs: RoutineLog[]
   notes: Record<string, string>
   timer: ActiveTimer | null
+  /** color = null → cambia solo según el mes */
+  settings: { color: string | null }
 }
 
 export const MAX_DAILY = 5
@@ -44,6 +46,7 @@ const seed = (): State => ({
   logs: [],
   notes: {},
   timer: null,
+  settings: { color: null },
 })
 
 function load(): State {
@@ -120,6 +123,10 @@ export const actions = {
   },
   movePending(id: string, day: string) {
     set({ ...state, pendings: state.pendings.map((p) => (p.id === id ? { ...p, day } : p)) })
+  },
+
+  setColor(color: string | null) {
+    set({ ...state, settings: { ...state.settings, color } })
   },
 
   setNote(day: string, text: string) {

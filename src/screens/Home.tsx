@@ -35,7 +35,6 @@ export function Home() {
     { to: 'atajos', title: 'Atajos', emoji: '⚡', tone: 'soft', sub: 'de hábitos diarios' },
     { title: 'Hábitos', emoji: '🌱', tone: 'later', sub: 'pronto' },
     { title: 'Metas', emoji: '🎯', tone: 'later', sub: 'pronto' },
-    { title: 'Estante', emoji: '📚', tone: 'later', sub: 'pronto' },
   ]
 
   return (

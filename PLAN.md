@@ -158,7 +158,7 @@ Estilo agenda japonesa (tipo Hobonichi) / journal, pero **hecho automáticamente
 - [x] Instalable como app (PWA) con ícono
 - [x] Guarda los datos en el propio dispositivo
 - [ ] Publicar en GitHub Pages para instalarla en iPhone y tablet
-- [~] Sincronización celular ↔ tablet (Supabase): código listo, falta conectar mi proyecto de Supabase (ver supabase/setup.sql)
+- [x] Sincronización celular ↔ tablet (Supabase): proyecto conectado (ver supabase/setup.sql)
 - Colores de los pendientes (definidos por mí): 🟢 verde si faltan más de 5 días, 🟡 amarillo si faltan 5 días o menos, 🔴 rojo si ya venció. Con hora, pasa a rojo al llegar esa hora; sin hora, es rojo desde que empieza su día límite.
 
 ## 9. Preguntas abiertas

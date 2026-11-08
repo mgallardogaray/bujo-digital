@@ -15,6 +15,13 @@ export function Calendar() {
   const today = todayISO()
   const activeTab = useRef<HTMLButtonElement>(null)
 
+  // Avanzar o retroceder de a un mes (pasa de diciembre a enero del año siguiente)
+  function shift(delta: number) {
+    const d = new Date(year, month + delta, 1)
+    setYear(d.getFullYear())
+    setMonth(d.getMonth())
+  }
+
   // El color de toda la app sigue al mes que estoy mirando
   useEffect(() => {
     document.documentElement.dataset.month = String(month + 1)
@@ -41,13 +48,13 @@ export function Calendar() {
       <Header title="Calendario" />
 
       <div className="yearbar">
-        <button className="ghost" onClick={() => setYear(year - 1)} aria-label="Año anterior">
+        <button className="ghost" onClick={() => shift(-1)} aria-label="Mes anterior">
           ‹
         </button>
         <span>
           {monthName(month)} {year}
         </span>
-        <button className="ghost" onClick={() => setYear(year + 1)} aria-label="Año siguiente">
+        <button className="ghost" onClick={() => shift(1)} aria-label="Mes siguiente">
           ›
         </button>
       </div>

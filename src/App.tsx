@@ -5,6 +5,7 @@ import { Home } from './screens/Home'
 import { Calendar } from './screens/Calendar'
 import { Day } from './screens/Day'
 import { Routines } from './screens/Routines'
+import { Shortcuts } from './screens/Shortcuts'
 
 export default function App() {
   const [page, param] = useRoute()
@@ -23,5 +24,6 @@ export default function App() {
   if (page === 'calendario') return <Calendar />
   if (page === 'dia') return <Day date={param ?? todayISO()} />
   if (page === 'rutinas') return <Routines />
+  if (page === 'atajos') return <Shortcuts />
   return <Home />
 }

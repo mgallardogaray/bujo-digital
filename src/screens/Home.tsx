@@ -32,6 +32,7 @@ export function Home() {
     },
     { to: 'calendario', title: 'Calendario', emoji: '🗓️', tone: 'soft', sub: 'ver el mes' },
     { to: 'rutinas', title: 'Rutinas', emoji: '⏱️', tone: 'paper', sub: 'con temporizador' },
+    { to: 'atajos', title: 'Atajos', emoji: '⚡', tone: 'soft', sub: 'de hábitos diarios' },
     { title: 'Hábitos', emoji: '🌱', tone: 'later', sub: 'pronto' },
     { title: 'Metas', emoji: '🎯', tone: 'later', sub: 'pronto' },
     { title: 'Estante', emoji: '📚', tone: 'later', sub: 'pronto' },

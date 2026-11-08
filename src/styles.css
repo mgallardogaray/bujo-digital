@@ -459,6 +459,47 @@ textarea:focus {
   cursor: pointer;
 }
 
+/* ---------- Atajos de hábitos diarios ---------- */
+.center { text-align: center; }
+.shortcuts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 16px;
+}
+.shortcut {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 20px 12px;
+  border: 1.5px solid var(--accent-soft);
+  border-radius: 22px;
+  background: var(--card);
+  box-shadow: 0 3px 10px rgba(90, 70, 30, 0.07);
+  font-family: var(--sans);
+  color: var(--ink);
+  cursor: pointer;
+}
+.shortcut:active { transform: scale(0.97); }
+.shortcut .emoji { font-size: 2.4rem; }
+.shortcut strong {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 1.1;
+  text-align: center;
+}
+.shortcut small { color: var(--soft); }
+.more {
+  display: block;
+  margin: 22px 0 0;
+  text-align: center;
+  color: var(--accent);
+  font-weight: 700;
+}
+
 /* ---------- Rutinas y temporizador ---------- */
 .routine { display: flex; align-items: center; gap: 4px; }
 .rmain {

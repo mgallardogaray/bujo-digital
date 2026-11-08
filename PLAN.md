@@ -153,6 +153,18 @@ Estilo agenda japonesa (tipo Hobonichi) / journal, pero **hecho automáticamente
 - **Fase 2:** notificaciones, hábitos + resumen semanal, metas, trackers de ánimo/sueño/estudio, mini journal y sticker del día.
 - **Fase 3:** estante de libros/series/películas, extras.
 
+## 8b. Avance de la Fase 1 (2026-11-07)
+- [x] Inicio visual con tarjetas (Hoy, Calendario, Rutinas; Hábitos/Metas/Estante marcados "pronto")
+- [x] Calendario mensual con puntitos de color por día
+- [x] Vista del día: pendientes (máx. 5), fecha y hora límite, colores, pasar a mañana, nota del día
+- [x] Pendientes no hechos pasan solos al día siguiente
+- [x] Rutinas con temporizador (guarda cuánto tardé de verdad, avisa a la mitad y al final)
+- [x] Instalable como app (PWA) con ícono
+- [x] Guarda los datos en el propio dispositivo
+- [ ] Publicar en GitHub Pages para instalarla en iPhone y tablet
+- [ ] Sincronización celular ↔ tablet (Supabase)
+- Umbrales de color actuales: rojo ≤ 24 h (o vencido), amarillo ≤ 72 h, verde más de 72 h.
+
 ## 9. Preguntas abiertas
 - [x] ~~¿PWA o nativa?~~ → PWA, todo gratis.
 - [x] ~~¿Diferencia tarea vs pendiente?~~ → Rutinas (con temporizador) vs Pendientes (con fecha límite).

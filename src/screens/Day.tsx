@@ -53,7 +53,7 @@ export function Day({ date }: { date: string }) {
   return (
     <div className="dayview">
       <div className="daymain">
-      <Header title={isToday ? 'Hoy' : formatLong(day)} back="calendario" />
+      <Header title={isToday ? 'Hoy' : formatLong(day)} back="" />
       {isToday && <p className="greet">{formatLong(day)}</p>}
 
       <section>

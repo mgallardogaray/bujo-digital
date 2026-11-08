@@ -499,6 +499,7 @@ textarea:focus {
 /* ---------- Colores ---------- */
 .palette {
   position: absolute;
+  z-index: 6; /* por encima del encabezado, si no el toque no llega */
   top: calc(env(safe-area-inset-top) + 22px);
   right: calc(env(safe-area-inset-right) + 16px);
   display: grid;

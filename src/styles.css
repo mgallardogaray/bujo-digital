@@ -518,7 +518,14 @@ textarea:focus {
 .sidebtn:active { background: var(--accent-soft); }
 
 /* ---------- Colores ---------- */
-.palette {
+.acctline { margin: 0; word-break: break-word; }
+.acctline.soft { margin-top: 6px; color: var(--soft); font-size: 0.9rem; }
+.cloud {
+  left: calc(env(safe-area-inset-left) + 16px);
+  right: auto !important;
+}
+.palette,
+.cloud {
   position: absolute;
   z-index: 6; /* por encima del encabezado, si no el toque no llega */
   top: calc(env(safe-area-inset-top) + 22px);

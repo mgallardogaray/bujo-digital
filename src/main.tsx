@@ -10,6 +10,9 @@ import '@fontsource/quicksand/700.css'
 import './styles.css'
 import { registerSW } from 'virtual:pwa-register'
 import App from './App'
+import { initSync } from './lib/sync'
+
+void initSync()
 
 // Actualizaciones: revisar al volver a la app y recargar sola si hay versión nueva.
 if ('serviceWorker' in navigator) {

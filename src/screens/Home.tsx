@@ -38,6 +38,9 @@ export function Home() {
 
   return (
     <>
+      <a className="cloud" href="#/cuenta" aria-label="Sincronizar" title="Sincronizar">
+        ☁️
+      </a>
       <a className="palette" href="#/colores" aria-label="Cambiar colores" title="Colores">
         🎨
       </a>

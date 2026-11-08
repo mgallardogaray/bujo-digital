@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Header } from '../components/Header'
-import { signIn, signOut, signUp, syncNow, useSync } from '../lib/sync'
+import { changePassword, signIn, signOut, signUp, syncNow, useSync } from '../lib/sync'
 
 export function Account() {
   const info = useSync()
@@ -8,6 +8,24 @@ export function Account() {
   const [password, setPassword] = useState('')
   const [busy, setBusy] = useState(false)
   const [msg, setMsg] = useState<string | null>(null)
+  const [newPw, setNewPw] = useState('')
+  const [newPw2, setNewPw2] = useState('')
+  const [pwMsg, setPwMsg] = useState<{ ok: boolean; text: string } | null>(null)
+  const [pwBusy, setPwBusy] = useState(false)
+
+  async function submitNewPassword(e: React.FormEvent) {
+    e.preventDefault()
+    if (newPw.length < 6) return setPwMsg({ ok: false, text: 'La contraseña debe tener al menos 6 caracteres.' })
+    if (newPw !== newPw2) return setPwMsg({ ok: false, text: 'Las dos contraseñas no son iguales.' })
+    setPwBusy(true)
+    setPwMsg(null)
+    const err = await changePassword(newPw)
+    setPwBusy(false)
+    if (err) return setPwMsg({ ok: false, text: err })
+    setNewPw('')
+    setNewPw2('')
+    setPwMsg({ ok: true, text: 'Contraseña cambiada ✓ Tus dispositivos siguen conectados.' })
+  }
 
   if (!info.configured) {
     return (
@@ -46,6 +64,30 @@ export function Account() {
             Cerrar sesión
           </button>
         </div>
+
+        <h2 className="sec">Cambiar contraseña</h2>
+        <form className="addform" onSubmit={(e) => void submitNewPassword(e)}>
+          <input
+            type="password"
+            value={newPw}
+            onChange={(e) => setNewPw(e.target.value)}
+            placeholder="Contraseña nueva (mínimo 6)"
+            autoComplete="new-password"
+            aria-label="Contraseña nueva"
+          />
+          <input
+            type="password"
+            value={newPw2}
+            onChange={(e) => setNewPw2(e.target.value)}
+            placeholder="Repite la contraseña nueva"
+            autoComplete="new-password"
+            aria-label="Repite la contraseña nueva"
+          />
+          <button className="btn" type="submit" disabled={pwBusy}>
+            Cambiar contraseña
+          </button>
+          {pwMsg && <p className={pwMsg.ok ? 'notice ok' : 'notice'}>{pwMsg.text}</p>}
+        </form>
       </>
     )
   }

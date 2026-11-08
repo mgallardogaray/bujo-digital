@@ -438,6 +438,7 @@ textarea:focus {
   background: var(--accent-soft);
 }
 .notice p { margin: 0 0 10px; }
+.notice.ok { background: var(--ok); }
 
 /* Nota del día: papel cuadriculado */
 .note {

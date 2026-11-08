@@ -149,8 +149,17 @@ function friendlyAuth(msg: string): string {
   if (/already registered/i.test(msg)) return 'Ese correo ya tiene cuenta: toca "Entrar".'
   if (/at least 6/i.test(msg)) return 'La contraseña debe tener al menos 6 caracteres.'
   if (/signups? not allowed|disabled/i.test(msg)) return 'El registro de cuentas nuevas está cerrado.'
+  if (/different from the old/i.test(msg)) return 'La nueva contraseña debe ser distinta de la actual.'
+  if (/reauthenticat/i.test(msg)) return 'Por seguridad, cierra sesión, vuelve a entrar y prueba otra vez.'
   if (/rate limit/i.test(msg)) return 'Demasiados intentos. Espera un rato y vuelve a probar.'
   return msg
+}
+
+/** Cambia la contraseña de la cuenta con la sesión abierta. Devuelve un mensaje de error, o null si salió bien. */
+export async function changePassword(password: string): Promise<string | null> {
+  if (!sb) return 'La sincronización no está configurada.'
+  const { error } = await sb.auth.updateUser({ password })
+  return error ? friendlyAuth(error.message) : null
 }
 
 /** Devuelven un mensaje de error, o null si salió bien. */

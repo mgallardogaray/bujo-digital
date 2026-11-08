@@ -5,6 +5,19 @@ import { VitePWA } from 'vite-plugin-pwa'
 // La app se publica en https://mgallardogaray.github.io/bujo-digital/
 export default defineConfig({
   base: '/bujo-digital/',
+  // Fecha y hora de esta versión (se muestra en el menú para saber qué versión tengo)
+  define: {
+    __APP_VERSION__: JSON.stringify(
+      new Date().toLocaleString('es-CL', {
+        timeZone: 'America/Santiago',
+        day: '2-digit',
+        month: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+      }),
+    ),
+  },
   plugins: [
     react(),
     VitePWA({

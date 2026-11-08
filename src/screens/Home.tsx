@@ -70,6 +70,26 @@ export function Home() {
           ),
         )}
       </div>
+
+      <p className="version">
+        versión {__APP_VERSION__} ·{' '}
+        <button className="linkbtn" onClick={forceUpdate}>
+          actualizar
+        </button>
+      </p>
     </>
   )
+}
+
+/** Borra la copia guardada de la app (no tus datos) y la vuelve a descargar. */
+async function forceUpdate() {
+  try {
+    const regs = await navigator.serviceWorker?.getRegistrations()
+    await Promise.all((regs ?? []).map((r) => r.unregister()))
+    const keys = await caches.keys()
+    await Promise.all(keys.map((k) => caches.delete(k)))
+  } catch {
+    /* si algo falla, igual recargamos */
+  }
+  window.location.reload()
 }

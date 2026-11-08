@@ -5,7 +5,6 @@ import { Home } from './screens/Home'
 import { Calendar } from './screens/Calendar'
 import { Day } from './screens/Day'
 import { Routines } from './screens/Routines'
-import { Shortcuts } from './screens/Shortcuts'
 import { Colors } from './screens/Colors'
 import { derive } from './lib/color'
 import { useStore } from './lib/store'
@@ -42,8 +41,7 @@ export default function App() {
 
   if (page === 'calendario') return <Calendar />
   if (page === 'dia') return <Day date={param ?? todayISO()} />
-  if (page === 'rutinas') return <Routines />
-  if (page === 'atajos') return <Shortcuts />
+  if (page === 'rutinas' || page === 'atajos') return <Routines />
   if (page === 'colores') return <Colors />
   return <Home />
 }

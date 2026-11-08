@@ -31,8 +31,7 @@ export function Home() {
       sub: todays.length ? `${done} de ${todays.length} listos` : 'nada por ahora',
     },
     { to: 'calendario', title: 'Calendario', emoji: '🗓️', tone: 'soft', sub: 'ver el mes' },
-    { to: 'rutinas', title: 'Rutinas', emoji: '⏱️', tone: 'paper', sub: 'con temporizador' },
-    { to: 'atajos', title: 'Atajos', emoji: '⚡', tone: 'soft', sub: 'de hábitos diarios' },
+    { to: 'rutinas', title: 'Rutinas', emoji: '⏱️', tone: 'paper', sub: 'atajos diarios' },
     { title: 'Hábitos', emoji: '🌱', tone: 'later', sub: 'pronto' },
     { title: 'Metas', emoji: '🎯', tone: 'later', sub: 'pronto' },
   ]

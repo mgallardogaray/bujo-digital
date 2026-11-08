@@ -31,6 +31,7 @@ export function Routines() {
 function RoutineList({ routines, logs }: { routines: Routine[]; logs: RoutineLog[] }) {
   const [name, setName] = useState('')
   const [minutes, setMinutes] = useState('10')
+  const [editing, setEditing] = useState(false)
 
   function add(e: React.FormEvent) {
     e.preventDefault()
@@ -43,43 +44,49 @@ function RoutineList({ routines, logs }: { routines: Routine[]; logs: RoutineLog
 
   return (
     <>
-      <Header title="Rutinas" tape="mint" />
-      <p className="hint">Toca una para empezar. El temporizador te ayuda a ver cuánto tiempo pasa de verdad.</p>
+      <Header title="Rutinas" />
+      <p className="monthlabel">atajos de hábitos diarios</p>
+      <p className="hint center">Toca una y el temporizador parte al tiro.</p>
 
-      <ul className="rlist">
+      <div className="shortcuts">
         {routines.map((r) => {
           const real = avgReal(logs, r.id)
           return (
-            <li key={r.id} className="routine">
+            <div key={r.id} className="shortcutwrap">
               <button
-                className="rmain"
+                className="shortcut"
                 onClick={() => {
                   primeAudio()
                   actions.startTimer(r.id)
                 }}
               >
                 <span className="emoji">{r.emoji}</span>
-                <span className="rname">
-                  {r.name}
-                  <small>
-                    {r.minutes} min{real !== null ? ` · en la práctica ~${real} min` : ''}
-                  </small>
-                </span>
-                <span className="play">▶</span>
+                <strong>{r.name}</strong>
+                <small>
+                  {r.minutes} min{real !== null ? ` · real ~${real}` : ''}
+                </small>
               </button>
-              <button
-                className="ghost"
-                aria-label={`Borrar ${r.name}`}
-                onClick={() => {
-                  if (confirm(`¿Borrar la rutina "${r.name}"?`)) actions.removeRoutine(r.id)
-                }}
-              >
-                ✕
-              </button>
-            </li>
+              {editing && (
+                <button
+                  className="del"
+                  aria-label={`Borrar ${r.name}`}
+                  onClick={() => {
+                    if (confirm(`¿Borrar la rutina "${r.name}"?`)) actions.removeRoutine(r.id)
+                  }}
+                >
+                  ✕
+                </button>
+              )}
+            </div>
           )
         })}
-      </ul>
+      </div>
+
+      {routines.length > 0 && (
+        <button className="more" onClick={() => setEditing(!editing)}>
+          {editing ? 'Listo ✓' : 'Quitar rutinas'}
+        </button>
+      )}
 
       <h2 className="sec">Nueva rutina</h2>
       <form className="addform" onSubmit={add}>

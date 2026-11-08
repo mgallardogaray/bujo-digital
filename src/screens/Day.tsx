@@ -51,7 +51,8 @@ export function Day({ date }: { date: string }) {
   }
 
   return (
-    <>
+    <div className="dayview">
+      <div className="daymain">
       <Header title={isToday ? 'Hoy' : formatLong(day)} back="calendario" />
       {isToday && <p className="greet">{formatLong(day)}</p>}
 
@@ -146,6 +147,26 @@ export function Day({ date }: { date: string }) {
           rows={4}
         />
       </section>
-    </>
+      </div>
+
+      <nav className="sidenav" aria-label="Navegación del día">
+        <a className="sidebtn" href={'#/dia/' + addDays(day, -1)} title="Día anterior">
+          <span>‹</span>
+          <small>Antes</small>
+        </a>
+        <a className="sidebtn" href={'#/dia/' + addDays(day, 1)} title="Día siguiente">
+          <span>›</span>
+          <small>Después</small>
+        </a>
+        <a className="sidebtn" href="#/calendario" title="Calendario">
+          <span>🗓️</span>
+          <small>Mes</small>
+        </a>
+        <a className="sidebtn" href="#/" title="Menú principal">
+          <span>🏠</span>
+          <small>Menú</small>
+        </a>
+      </nav>
+    </div>
   )
 }

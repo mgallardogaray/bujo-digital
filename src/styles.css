@@ -461,6 +461,41 @@ textarea:focus {
   cursor: pointer;
 }
 
+/* ---------- Día: barra lateral ---------- */
+.dayview {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.daymain { flex: 1; min-width: 0; }
+.sidenav {
+  position: sticky;
+  top: 32vh;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px;
+  border-radius: 22px;
+  background: var(--card);
+  border: 1.5px solid var(--accent-soft);
+  box-shadow: 0 3px 10px rgba(90, 70, 30, 0.08);
+}
+.sidebtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 48px;
+  padding: 8px 0 6px;
+  border-radius: 16px;
+  color: var(--ink);
+}
+.sidebtn span { font-size: 1.35rem; line-height: 1; }
+.sidebtn:nth-child(-n + 2) span { font-size: 2rem; line-height: 0.9; }
+.sidebtn small { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; color: var(--soft); }
+.sidebtn:active { background: var(--accent-soft); }
+
 /* ---------- Colores ---------- */
 .palette {
   position: absolute;

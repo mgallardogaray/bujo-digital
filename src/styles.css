@@ -1,17 +1,17 @@
 :root {
-  --paper: #fbf6ea;
-  --ink: #3f3b35;
-  --soft: #8a8274;
-  --line: #e6dcc3;
-  --butter: #f6e7a1;
-  --sage: #cfe2bf;
-  --lav: #dcd3f0;
-  --mint: #d2ebe2;
-  --peach: #f8d9c8;
-  --sky: #d3e4f1;
-  --ok: #dcefd0;
-  --soon: #fbf0b8;
-  --near: #f6cdc6;
+  --paper: #f4efe6;
+  --ink: #1c1c1c;
+  --soft: #82796c;
+  --line: #ddd4c2;
+  --butter: #e6dcc6;
+  --sage: #ebe4d4;
+  --lav: #fffdf8;
+  --mint: #e6dcc6;
+  --peach: #d9cdb6;
+  --sky: #fffdf8;
+  --ok: #dfe9d3;
+  --soon: #f3ebc4;
+  --near: #efd3cc;
   --hand: 'Caveat', cursive;
   --sans: 'Quicksand', system-ui, sans-serif;
 }
@@ -27,7 +27,7 @@ body {
 
 body {
   background-color: var(--paper);
-  background-image: radial-gradient(#d8cdb0 1px, transparent 1px);
+  background-image: radial-gradient(#dcd4c2 1px, transparent 1px);
   background-size: 22px 22px;
   color: var(--ink);
   font-family: var(--sans);
@@ -126,11 +126,15 @@ a {
   background: rgba(255, 255, 255, 0.6);
   border: 1px dashed rgba(0, 0, 0, 0.1);
 }
+.emoji,
+.t-emoji,
+.chip { filter: grayscale(1); }
 .card .emoji { font-size: 2.2rem; margin-bottom: auto; }
 .card strong { font-family: var(--hand); font-size: 1.9rem; line-height: 1; }
 .card small { color: var(--soft); }
-.card.soon { opacity: 0.55; }
-.c-butter { background: var(--butter); }
+.card.soon { opacity: 0.5; background: transparent; border: 1.5px dashed var(--line); box-shadow: none; }
+.c-butter { background: var(--ink); color: #fff; }
+.c-butter small { color: #cfc8b8; }
 .c-lav { background: var(--lav); }
 .c-mint { background: var(--mint); }
 .c-sage { background: var(--sage); }
@@ -185,13 +189,14 @@ a {
   cursor: pointer;
 }
 .cell .num { font-weight: 700; }
-.cell.today { border-color: #c9b96a; background: var(--butter); }
+.cell.today { border-color: var(--ink); background: var(--ink); color: #fff; }
 .dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 3px; }
 .dot { width: 8px; height: 8px; border-radius: 50%; display: block; }
-.d-ok { background: #9bcb86; }
-.d-soon { background: #e8c94f; }
-.d-near { background: #e58b80; }
-.d-done { background: #c9c3b4; }
+.d-ok { background: #a9c79a; }
+.d-soon { background: #dcc566; }
+.d-near { background: #d9998f; }
+.d-done { background: #bdb5a3; }
+.cell.today .d-done { background: #8d8676; }
 
 /* ---------- Día / pendientes ---------- */
 .sec {
@@ -240,7 +245,7 @@ a {
   background: rgba(255, 255, 255, 0.7);
   font-size: 1rem;
   font-weight: 700;
-  color: #5d8a50;
+  color: var(--ink);
   cursor: pointer;
 }
 .pbody { flex: 1; display: flex; flex-direction: column; min-width: 0; }
@@ -283,8 +288,8 @@ input[type='time'] {
 .row label { min-width: 0; }
 input:focus,
 textarea:focus {
-  outline: 2px solid var(--sage);
-  border-color: #b8d3a3;
+  outline: 2px solid var(--ink);
+  border-color: var(--ink);
 }
 .row { display: flex; gap: 10px; }
 .row label {
@@ -298,17 +303,16 @@ textarea:focus {
 .btn {
   border: 0;
   border-radius: 99px;
-  background: var(--sage);
-  color: var(--ink);
+  background: var(--ink);
+  color: #fff;
   font-family: var(--sans);
   font-size: 1rem;
   font-weight: 700;
   padding: 12px 22px;
   cursor: pointer;
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
 }
-.btn:active { transform: translateY(1px); box-shadow: none; }
-.btn.alt { background: var(--butter); }
+.btn:active { transform: translateY(1px); }
+.btn.alt { background: #fffdf8; color: var(--ink); border: 1.5px solid var(--ink); }
 .notice {
   margin-top: 14px;
   padding: 14px;
@@ -349,7 +353,7 @@ textarea:focus {
 .rmain .emoji { font-size: 1.7rem; }
 .rname { flex: 1; display: flex; flex-direction: column; font-weight: 700; }
 .rname small { font-weight: 500; color: var(--soft); }
-.play { color: #5d8a50; }
+.play { color: var(--ink); }
 
 .timer {
   display: flex;
@@ -361,12 +365,12 @@ textarea:focus {
 .ring-bg { fill: none; stroke: var(--line); stroke-width: 14; }
 .ring {
   fill: none;
-  stroke: #9bcb86;
+  stroke: var(--ink);
   stroke-width: 14;
   stroke-linecap: round;
   transition: stroke-dashoffset 0.3s linear;
 }
-.ring.over { stroke: #e9a89a; }
+.ring.over { stroke: #c9897f; }
 .t-emoji { font-size: 34px; }
 .t-clock { font-family: var(--hand); font-size: 46px; font-weight: 700; fill: var(--ink); }
 .tmsg { font-family: var(--hand); font-size: 1.7rem; margin: 4px 0 8px; text-align: center; }

@@ -59,7 +59,7 @@ La app se navega como un **inicio visual con tarjetas grandes**: aprieto una y e
   - 🟢 Verde claro → voy a tiempo.
   - 🟡 Amarillo claro → queda poco.
   - 🔴 Rojo claro → muy cerca del límite (o vencido).
-  - _(por definir: umbrales exactos)_
+  - Umbrales: verde = faltan más de 5 días · amarillo = 5 días o menos · rojo = ya venció.
 
 ### 4.4 Tracker de hábitos
 - Creo mis propios hábitos (ej. ejercicio, estudiar, leer) y los marco cada día con un toque.
@@ -159,14 +159,14 @@ Estilo agenda japonesa (tipo Hobonichi) / journal, pero **hecho automáticamente
 - [x] Guarda los datos en el propio dispositivo
 - [ ] Publicar en GitHub Pages para instalarla en iPhone y tablet
 - [ ] Sincronización celular ↔ tablet (Supabase)
-- Umbrales de color actuales: rojo ≤ 24 h (o vencido), amarillo ≤ 72 h, verde más de 72 h.
+- Colores de los pendientes (definidos por mí): 🟢 verde si faltan más de 5 días, 🟡 amarillo si faltan 5 días o menos, 🔴 rojo si ya venció. Sin hora, vence al terminar el día.
 
 ## 9. Preguntas abiertas
 - [x] ~~¿PWA o nativa?~~ → PWA, todo gratis.
 - [x] ~~¿Diferencia tarea vs pendiente?~~ → Rutinas (con temporizador) vs Pendientes (con fecha límite).
 - [x] ~~¿Debe funcionar sin internet?~~ → Sí, como extra (no crítico).
 - [x] ~~¿Trackers de ánimo / sueño / estudio y mini journal?~~ → Sí, me gustan (Fase 2–3).
-- [ ] Umbrales de los colores (¿cuándo pasa de verde a amarillo y de amarillo a rojo?).
+- [x] ~~Umbrales de los colores~~ → verde > 5 días, amarillo ≤ 5 días, rojo = vencido.
 - [ ] ¿Los pasos de las metas cuentan para el límite diario?
 - [ ] ¿Vincular pendientes con hábitos (ej. completar "estudiar" marca el hábito)?
 - [ ] Nombre de la app.

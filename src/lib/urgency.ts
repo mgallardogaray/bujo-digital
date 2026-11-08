@@ -1,22 +1,32 @@
 import type { Pending } from './store'
 
+// 'ok' = verde, 'soon' = amarillo, 'near' = rojo (ya venció)
 export type Urgency = 'ok' | 'soon' | 'near'
 
-// Umbrales (ajustables): cuántas horas faltan para el límite.
-const NEAR_HOURS = 24 // rojo claro: queda 1 día o menos (o ya pasó)
-const SOON_HOURS = 72 // amarillo claro: quedan 3 días o menos
+// Umbral (ajustable): a partir de cuántos días faltantes pasa de verde a amarillo.
+const YELLOW_DAYS = 5
 
-export function urgency(p: Pick<Pending, 'due' | 'dueTime'>, now: number): Urgency {
+function dueTime(p: Pick<Pending, 'due' | 'dueTime'>): number {
   const [y, m, d] = p.due.split('-').map(Number)
-  const [hh, mm] = (p.dueTime || '23:59').split(':').map(Number)
-  const hoursLeft = (new Date(y, m - 1, d, hh, mm).getTime() - now) / 36e5
-  if (hoursLeft <= NEAR_HOURS) return 'near'
-  if (hoursLeft <= SOON_HOURS) return 'soon'
-  return 'ok'
+  const [hh, mm] = (p.dueTime || '23:59').split(':').map(Number) // sin hora = vence al terminar el día
+  return new Date(y, m - 1, d, hh, mm).getTime()
+}
+
+/**
+ * Verde: faltan más de 5 días.
+ * Amarillo: faltan 5 días o menos.
+ * Rojo: ya venció.
+ */
+export function urgency(p: Pick<Pending, 'due' | 'dueTime'>, now: number): Urgency {
+  if (dueTime(p) < now) return 'near'
+  // Se cuentan días de calendario: "dentro de 5 días" = 5, sin importar la hora.
+  const [y, m, d] = p.due.split('-').map(Number)
+  const today = new Date(now)
+  const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime()
+  const daysLeft = Math.round((new Date(y, m - 1, d).getTime() - todayStart) / 864e5)
+  return daysLeft > YELLOW_DAYS ? 'ok' : 'soon'
 }
 
 export function isOverdue(p: Pick<Pending, 'due' | 'dueTime'>, now: number): boolean {
-  const [y, m, d] = p.due.split('-').map(Number)
-  const [hh, mm] = (p.dueTime || '23:59').split(':').map(Number)
-  return new Date(y, m - 1, d, hh, mm).getTime() < now
+  return dueTime(p) < now
 }

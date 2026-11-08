@@ -1,13 +1,14 @@
 import { Header } from '../components/Header'
-import { todayISO } from '../lib/dates'
+import { monthName, todayISO } from '../lib/dates'
 import { useStore } from '../lib/store'
 
-type Card = { to?: string; title: string; emoji: string; color: string; sub: string }
+type Card = { to?: string; title: string; emoji: string; tone: string; sub: string }
 
 export function Home() {
   const s = useStore()
   const today = todayISO()
-  const hour = new Date().getHours()
+  const now = new Date()
+  const hour = now.getHours()
   const greet =
     hour < 6
       ? 'Buenas noches 🌙'
@@ -26,19 +27,22 @@ export function Home() {
       to: `dia/${today}`,
       title: 'Hoy',
       emoji: '🌼',
-      color: 'butter',
+      tone: 'accent',
       sub: todays.length ? `${done} de ${todays.length} listos` : 'nada por ahora',
     },
-    { to: 'calendario', title: 'Calendario', emoji: '🗓️', color: 'lav', sub: 'ver el mes' },
-    { to: 'rutinas', title: 'Rutinas', emoji: '⏱️', color: 'mint', sub: 'con temporizador' },
-    { title: 'Hábitos', emoji: '🌱', color: 'sage', sub: 'pronto' },
-    { title: 'Metas', emoji: '🎯', color: 'peach', sub: 'pronto' },
-    { title: 'Estante', emoji: '📚', color: 'sky', sub: 'pronto' },
+    { to: 'calendario', title: 'Calendario', emoji: '🗓️', tone: 'soft', sub: 'ver el mes' },
+    { to: 'rutinas', title: 'Rutinas', emoji: '⏱️', tone: 'paper', sub: 'con temporizador' },
+    { title: 'Hábitos', emoji: '🌱', tone: 'later', sub: 'pronto' },
+    { title: 'Metas', emoji: '🎯', tone: 'later', sub: 'pronto' },
+    { title: 'Estante', emoji: '📚', tone: 'later', sub: 'pronto' },
   ]
 
   return (
     <>
       <Header title="Bujo" back={null} />
+      <p className="monthlabel">
+        {monthName(now.getMonth())} {now.getFullYear()}
+      </p>
       <p className="greet">{greet}</p>
 
       {running && (
@@ -50,13 +54,13 @@ export function Home() {
       <div className="cards">
         {cards.map((c) =>
           c.to ? (
-            <a key={c.title} className={`card c-${c.color}`} href={'#/' + c.to}>
+            <a key={c.title} className={`card t-${c.tone}`} href={'#/' + c.to}>
               <span className="emoji">{c.emoji}</span>
               <strong>{c.title}</strong>
               <small>{c.sub}</small>
             </a>
           ) : (
-            <div key={c.title} className={`card soon c-${c.color}`}>
+            <div key={c.title} className="card t-later">
               <span className="emoji">{c.emoji}</span>
               <strong>{c.title}</strong>
               <small>{c.sub}</small>

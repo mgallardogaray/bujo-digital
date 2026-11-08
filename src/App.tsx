@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useRoute } from './lib/router'
-import { todayISO } from './lib/dates'
+import { isISO, todayISO } from './lib/dates'
 import { Home } from './screens/Home'
 import { Calendar } from './screens/Calendar'
 import { Day } from './screens/Day'
@@ -11,6 +11,13 @@ export default function App() {
 
   useEffect(() => {
     window.scrollTo(0, 0)
+  }, [page, param])
+
+  // Cada mes tiene su propio color. El calendario lo maneja él mismo.
+  useEffect(() => {
+    if (page === 'calendario') return
+    const iso = page === 'dia' && isISO(param) ? param : todayISO()
+    document.documentElement.dataset.month = String(Number(iso.slice(5, 7)))
   }, [page, param])
 
   if (page === 'calendario') return <Calendar />

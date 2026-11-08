@@ -115,7 +115,7 @@ export function Day({ date }: { date: string }) {
         )}
       </section>
 
-      {isToday && s.routines.length > 0 && (
+      {s.routines.length > 0 && (
         <section>
           <h2 className="sec">Rutinas</h2>
           <div className="chips">

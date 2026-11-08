@@ -8,7 +8,14 @@ export function Home() {
   const s = useStore()
   const today = todayISO()
   const hour = new Date().getHours()
-  const greet = hour < 12 ? 'Buenos días' : hour < 20 ? 'Buenas tardes' : 'Buenas noches'
+  const greet =
+    hour < 6
+      ? 'Buenas noches 🌙'
+      : hour < 12
+        ? 'Buenos días ☀️'
+        : hour < 20
+          ? 'Buenas tardes 🌞'
+          : 'Buenas noches 🌙'
 
   const todays = s.pendings.filter((p) => p.day === today)
   const done = todays.filter((p) => p.done).length
@@ -32,7 +39,7 @@ export function Home() {
   return (
     <>
       <Header title="Bujo" back={null} />
-      <p className="greet">{greet} 💛</p>
+      <p className="greet">{greet}</p>
 
       {running && (
         <a className="banner" href="#/rutinas">

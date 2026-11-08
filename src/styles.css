@@ -126,9 +126,6 @@ a {
   background: rgba(255, 255, 255, 0.6);
   border: 1px dashed rgba(0, 0, 0, 0.1);
 }
-.emoji,
-.t-emoji,
-.chip { filter: grayscale(1); }
 .card .emoji { font-size: 2.2rem; margin-bottom: auto; }
 .card strong { font-family: var(--hand); font-size: 1.9rem; line-height: 1; }
 .card small { color: var(--soft); }

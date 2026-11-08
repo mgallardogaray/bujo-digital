@@ -164,12 +164,16 @@ a {
 }
 .card .emoji { font-size: 2.2rem; margin-bottom: auto; }
 .card strong {
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 600;
-  font-size: 1.9rem;
-  line-height: 1;
+  font-family: var(--sans);
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin: 4px 0 2px;
+  color: color-mix(in srgb, var(--accent) 75%, #000);
 }
+.t-accent strong { color: var(--on-accent); }
 .card small { color: var(--soft); }
 .t-accent { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .t-accent small { color: inherit; opacity: 0.85; }
